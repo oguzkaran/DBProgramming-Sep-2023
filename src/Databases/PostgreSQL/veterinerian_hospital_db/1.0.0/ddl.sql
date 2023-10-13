@@ -51,6 +51,6 @@ create table veterinarian_to_animals (
 create table veterinarian_to_animal_prices (
 	veterinarian_to_animal_price_id bigserial primary key,
 	veterinarian_to_animal_id bigint references veterinarian_to_animals(veterinarian_to_animal_id) not null,
-	price real check(price >= 0.0) default(0.0) not null,
+	price real check(price >= 0.0) default(0.0),
 	description varchar(256)
 );

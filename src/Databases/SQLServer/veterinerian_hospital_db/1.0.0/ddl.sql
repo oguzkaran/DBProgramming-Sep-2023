@@ -56,3 +56,46 @@ create table veterinarian_to_animal_prices (
 	description nvarchar(256)
 )
 
+
+create procedure sp_insert_animal_with_owner(@owner_name nvarchar(200), @owner_address nvarchar(max), @animal_name nvarchar(200), @birth_date date)
+as
+begin
+
+    -- İleride transaction safe yapılacaktır
+    insert into owners (name, address) values (@owner_name, @owner_address)
+    declare @owner_id bigint = @@IDENTITY
+
+    insert into animals (owner_id, name, birth_date) values (@owner_id, @animal_name, @birth_date)
+end
+
+go
+
+
+create procedure sp_insert_animal_assign_veterinarian(@owner_id bigint, @animal_name nvarchar(200), @birth_date date, @diploma_no bigint)
+as
+begin
+    -- İleride transaction safe yapılacaktır
+    insert into animals (owner_id, name, birth_date) values (@owner_id, @animal_name, @birth_date)
+    declare @animal_id bigint = @@IDENTITY
+
+    insert into veterinarian_to_animals (diploma_no, animal_id) values (@diploma_no, @animal_id)
+end
+
+
+create function get_age_average(@reference_date date)
+returns table
+as
+return (select avg(datediff(day, birth_date, @reference_date) / 365.)  as average from animals)
+
+
+
+create function get_oldest_and_youngest_ages(@reference_date date)
+returns table
+as
+return (
+    select 
+    max(datediff(day, birth_date, @reference_date) / 365.) as oldest, 
+    min(datediff(day, birth_date, @reference_date) / 365.) as youngest
+    from animals)
+
+go

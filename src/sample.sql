@@ -41,12 +41,12 @@
 
   3. Her bir dersi alan öğrencilerin sayısını veren sorguyu yazınız
 
-  3. Dersi, parametresi ile aldığı sayıdan fazla kez alan öğrencilerin kayıt olduğu dersleri gruplayan fonksiyonu yazınız
+  4. Dersi, parametresi ile aldığı sayıdan fazla kez alan öğrencilerin kayıt olduğu dersleri gruplayan fonksiyonu yazınız
 
-  4. Dersi, parametresi ile aldığı sayıdan fazla kez alan öğrencilerin kayıt olduğu derslerin not ortalamasını getiren fonksiyonu
+  5. Dersi, parametresi ile aldığı sayıdan fazla kez alan öğrencilerin kayıt olduğu derslerin not ortalamasını getiren fonksiyonu
   yazınız
 
-  5. Bir dersin açılabilmesi için belli sayıda öğrencinin olması gerektiği durumda açılması için gereken minimum
+  6. Bir dersin açılabilmesi için belli sayıda öğrencinin olması gerektiği durumda açılması için gereken minimum
     öğrenci sayısını parametre olarak alan ve açılabilen dersleri getiren fonksiyonu yazınız
 -----------------------------------------------------------------------------------------------------------------------*/
 
@@ -84,7 +84,7 @@ create table grades (
 go
 
 insert into grades (description, value) 
-values ('AA', 4.0), ('BA', 3.5), ('BB', 3.0), ('CB', 2.5), ('CC', 2.0),('DC', 1.5), ('DD', 1.0), ('FF', 00), ('NA', -1), ('P', -1)
+values ('AA', 4.0), ('BA', 3.5), ('BB', 3.0), ('CB', 2.5), ('CC', 2.0), ('DC', 1.5), ('DD', 1.0), ('FF', 00), ('NA', -1), ('P', -1)
 
 go
 
@@ -109,3 +109,98 @@ return (
 go
 
 select * from dbo.get_number_of_students_grades_by_lecture_code('BIM 101')
+
+go
+
+--2. 
+create function get_students_by_credits_greater(@credits int)
+returns table
+as
+return (
+	select 
+	s.citizen_number, 
+	s.first_name + ' ' + s.last_name as full_name,
+	sum(lec.credits) as total_credits
+	from lectures lec inner join enrolls e on lec.lecture_code = e.lecture_code
+	inner join students s on e.student_id = s.student_id where e.grade_id <= 7
+	group by s.citizen_number, s.first_name + ' ' + s.last_name
+	having 	sum(lec.credits) > @credits
+)
+
+go
+
+select * from dbo.get_students_by_credits_greater(140)
+
+
+go
+-- 3.
+select lec.lecture_code, lec.name, count(*) as students_counts
+from lectures lec inner join enrolls e on lec.lecture_code = e.lecture_code
+group by lec.lecture_code, lec.name order by lec.lecture_code 
+
+go
+
+-- 4.
+
+create function get_lectures_with_count_by_count_greater(@count int)
+returns table
+as
+return (
+	select lec.lecture_code, lec.name, count(*) as count
+	from lectures lec inner join enrolls e on lec.lecture_code = e.lecture_code
+	group by lec.lecture_code, lec.name having count(*) > @count
+)
+
+
+go
+
+select * from dbo.get_lectures_with_count_by_count_greater(2)
+
+go
+
+
+-- 5.
+
+create function get_lectures_with_average_by_count_greater(@count int)
+returns table
+as
+return (
+	select lec.lecture_code, lec.name, avg(lec.credits * g.value) as everage
+	from 
+	lectures lec inner join enrolls e on lec.lecture_code = e.lecture_code
+	inner join grades g on e.grade_id = g.grade_id
+	group by lec.lecture_code, lec.name having count(*) > @count
+)
+
+go
+
+select * from dbo.get_lectures_with_average_by_count_greater(2)
+
+go
+
+-- 6.
+
+create function get_available_lectures_by_student_count(@count int)
+returns table
+as
+return (
+	select lec.lecture_code, lec.name, lec.credits, count(*) as count
+	from lectures lec inner join enrolls e on lec.lecture_code = e.lecture_code
+	group by lec.lecture_code, lec.name, lec.credits having count(*) >= @count
+)
+
+
+go
+
+
+create function get_unavailable_lectures_by_student_count(@count int)
+returns table
+as
+return (
+	select lec.lecture_code, lec.name, lec.credits, count(*) as count
+	from lectures lec inner join enrolls e on lec.lecture_code = e.lecture_code
+	group by lec.lecture_code, lec.name, lec.credits having count(*) < @count
+)
+
+go 
+

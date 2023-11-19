@@ -1,0 +1,25 @@
+1. What are the 'Things of Interest' in the Scope to be modelled ...
+
+Chess Clubs
+Players
+Members
+Tournaments
+Tournament Matches.
+2. How are these 'Things of Interest' related ? ...
+
+CHESS CLUBS can have many MEMBERS.
+A PLAYER can have one and only one RANKING.
+CHESS CLUBS can host many TOURNAMENTS.
+TOURNAMENTS can also be sponsored by organisations,(such as Newspapers or Federations),
+which are not CHESS CLUBS.
+Many TOURNAMENTS occur every year.
+PLAYERS can participate in zero or many TOURNAMENTS.
+A PLAYER can be a MEMBER in only one CHESS CLUBS at any one time.
+A TOURNAMENT can have many PLAYERS.
+A TOURNAMENT can have zero or many MATCHES between two participating PLAYERS.
+3. What do we know about the 'Things of Interest' ? ...
+
+A CHESS CLUB is identified by a unique ID, and has a Name, Address and Other Details.
+A PLAYER is identified by a unique ID, and has a Name, Address and Other Details.
+A TOURNAMENT is identified by a unique Code, and has a Name, Sponsor, Start Date and End Date.
+A TOURNAMENT can have zero, one or many SPONSORS.

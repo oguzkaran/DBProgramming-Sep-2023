@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="AnimalGetService" />
+        <module name="com-atahanyengin-library-animalhospital-repository" />
+        <module name="AnimalPostService" />
+        <module name="OwnerGetService" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="AnimalHospiatalServiceApp" target="17" />
+      <module name="com-metemengen-library-animalhospital-repository" target="17" />
+      <module name="GenericParenProject" target="17" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="AnimalGetService" options="" />
+      <module name="AnimalPostService" options="" />
+      <module name="AnimalServiceApp" options="" />
+      <module name="OwnerGetService" options="" />
+      <module name="com-atahanyengin-library-animalhospital-repository" options="" />
+      <module name="com-metemengen-library-animalhospital-repository" options="-parameters" />
+    </option>
+  </component>
+</project>

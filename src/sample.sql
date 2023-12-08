@@ -1,26 +1,5 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Sınıf Çalışması: Aşağıdaki tabloları hazırlayınız ve ilgili soruları yanıtlayınız
-	people
-		- citizen_id char(11)
-		- first_name varchar(100)
-		- last_name varchar(100)
-		- birth_date
-		
-	people_younger
-		- citizen_id char(11)
-		- first_name varchar(100)
-		- last_name varchar(100)
-		- birth_date
-		
-	people_older
-		- citizen_id char(11)
-		- first_name varchar(100)
-		- last_name varchar(100)
-		- birth_date
-		
-	Soru:
-	- Insert işleminde aşı 18'den büyük 65'den küçük olanları people tablosuna, yaşı 18'den küçük olanları people_younger 
-	tablosuna ve yaşı 65'den büyük olanları people_older tablosuna ekleyen trigger'ları yazınız    	
+	
 -----------------------------------------------------------------------------------------------------------------------*/
 
 create database dps23_peopledb;

@@ -1,26 +1,23 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Sınıf Çalışması: Aşağıdaki veritabanını oluşturunuz ve soruları cevaplayınız
-	cities
-		- city_id
-		- name
-	patients
-		- patient_id
-		- full_name
-		- city_id
-		- birth_date
-	relations
-		- relation_id 
-		- description (Mother, Dad, Child, Aunt, Uncle etc)
-	companions
-		- companion_id
-		- full_name
-		- patient_id,
-		- relation_id
+	Sınıf Çalışması: Basit bir çoktan seçmeli sınava (yarışmaya) ilişkin aşağıdaki veritabanını oluşturunuz ve ilgili
+	soruları cevaplayınız
+		questions:
+			- question_id
+			- description
+			- level_id			
+		options:
+			- option_id
+			- description
+			- question_id
+			- is_answer
+		levels
+			- level_id
+			- description
+		Sorulan seçenek sayısı değişebilecektir
 	Sorular:
-	1. Tüm patient_id'lere ilişkin hastaların isimlerini büyük harfe çeviren SP'yi yazınız
-	2. Parametresi ile aldığı yaştabn büyük olan hastaların refaakçi ve kendi isimlerini büyük harfe çeviren SP'yi
-	yazınız
-	3. Parametresi ile aldığı city_id değerine göre refakatçi isimlerini küçük harfe çeviren SP'yi yazınız
+	1. Her çağrıldığında herhangi bir seviyeden rasgele bir soru getiren sorgu
+	2. Parametresi ile aldığı level_id bilgisine göre rasgele bir soru getiren sorgu
+	3. Parametresi ile aldığı question_id'ye göre ilgili sorunun doğru cevaplarını getiren sorgu
 -----------------------------------------------------------------------------------------------------------------------*/
 create table staff (
 	staff_id int primary key identity(1, 1),

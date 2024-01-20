@@ -1,62 +1,71 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Sınıf Çalışması: Basit bir çoktan seçmeli sınava (yarışmaya) ilişkin aşağıdaki veritabanını oluşturunuz ve ilgili
-	soruları cevaplayınız
-		questions:
-			- question_id
-			- description
-			- level_id			
-		options:
-			- option_id
-			- description
-			- question_id
-			- is_answer
-		levels
-			- level_id
-			- description
-		Sorulan seçenek sayısı değişebilecektir
-	Sorular:
-	1. Her çağrıldığında herhangi bir seviyeden rasgele bir soru getiren sorgu
-	2. Parametresi ile aldığı level_id bilgisine göre rasgele bir soru getiren sorgu
-	3. Parametresi ile aldığı question_id'ye göre ilgili sorunun doğru cevaplarını getiren sorgu
------------------------------------------------------------------------------------------------------------------------*/
-create table staff (
-	staff_id int primary key identity(1, 1),
-	citizen_id char(40) unique not null,
-	first_name nvarchar(100) not null,
-	last_name nvarchar(100) not null,
-	birth_date date not null,
-	phone char(20) not null
-)
+	Sınıf Çalışması: Aşağıdaki tabloya göre ilgili soruları cevaplayınız
+    employees
+        citizen_id char(40)
+        first_name
+        middle_name
+        last_name
+        birth_date
+        entry_date (default getdate)
+    Sorular
+        1. Parametresi ile aldığı doğum tarihi bilgisine göre aşağıdaki gibi Türkçe mesajlar döndüren get_birth_day_message_tr
+        fonksiyonunu yazınız
+            - Doğum günü geçmiş ise "Geçmiş doğum gününüz kutlu olsun. Yeni yaşınız: 56"
+            - Doğum günü henüz gelmemiş ise "Doğum gününüz şimdiden kutlu olsun. Yeni yaşınız: 56"
+            - Doğum günü o gün ise "Doğum gününün kutlu olsun. Yeni yaşınız: 56"
 
+        2. Parametresi ile aldığı ay ve yıl bilgisine göre o ay ve yıl içerisinde işe girmiş olan kişileri tablo 
+        olarak döndüren get_employees_by_month_and_year fonksiyonunu yazınız
+-----------------------------------------------------------------------------------------------------------------------*/
+
+create database companydb
 
 go
 
-create function get_random_staff_citizen_id()
-returns char(40)
+use companydb
+
+go
+
+create table employees (
+	citizen_id char(40),
+	first_name nvarchar(100) not null,
+	middle_name nvarchar(100),
+	last_name nvarchar(100) not null,
+	birth_date date not null,
+	entry_date date default(getdate()) not null
+)
+
+go
+
+
+-- 1
+create function get_birth_date_message(@birth_date date)
+returns nvarchar(300)
 as
 begin
-	declare @bound int = (select count(*) from staff) + 1
-	declare @min int = 1
+	declare @today date = getdate()
+	declare @birth_day date = datefromparts(datepart(year, @today), datepart(month, @birth_date), datepart(day, @birth_date))
+	declare @age real = datediff(day, @birth_date, @today) / 365.
+	
+	declare @message nvarchar(300)
 
-	declare @index int = floor(rand() * (@bound - @min) + @min)
-	declare crs_staff cursor scroll for select citizen_id from staff 
-	open crs_staff 
+	if @today > @birth_day
+		set @message = 'Geçmiş doğum gününüz kutlu olsun. Yeni yaşınız:'
+	else if @today < @birth_day
+		set @message = 'Doğum gününüz şimdiden kutlu olsun. Yeni yaşınız:'
+	else 
+		set @message = 'Doğum gününün kutlu olsun. Yeni yaşınız:'
 
-	declare @citizen_id char(40) = ''
-
-	fetch absolute @index from crs_staff into @citizen_id
-
-	close crs_staff
-	deallocate crs_staff
-
-	return @citizen_id
+	return @message	+ cast (@age as nvarchar(10))
 end
 
 go
 
 
-declare @citizen_id char(40)
-
-exec sp_fill_random_staff @citizen_id output
-
-select * from staff where citizen_id = @citizen_id
+-- 2
+create function get_employees_by_month_and_year(@month int, @year int)
+returns table
+as
+return (
+	select * from employees where datepart(month, entry_date) = @month and datepart(year, entry_date) = @year
+)

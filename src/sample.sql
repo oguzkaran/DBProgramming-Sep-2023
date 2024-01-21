@@ -1,71 +1,50 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Sınıf Çalışması: Aşağıdaki tabloya göre ilgili soruları cevaplayınız
-    employees
-        citizen_id char(40)
-        first_name
-        middle_name
-        last_name
-        birth_date
-        entry_date (default getdate)
-    Sorular
-        1. Parametresi ile aldığı doğum tarihi bilgisine göre aşağıdaki gibi Türkçe mesajlar döndüren get_birth_day_message_tr
-        fonksiyonunu yazınız
-            - Doğum günü geçmiş ise "Geçmiş doğum gününüz kutlu olsun. Yeni yaşınız: 56"
-            - Doğum günü henüz gelmemiş ise "Doğum gününüz şimdiden kutlu olsun. Yeni yaşınız: 56"
-            - Doğum günü o gün ise "Doğum gününün kutlu olsun. Yeni yaşınız: 56"
+	sqlcmd SQLServer için bir komut yorumlayıcı (command promt) uygulamadır. Bu tarz komut yorumlayıcı programlara 
+	REPL (Read, Evaluate, Print, Loop) da denilmektedir. sqlcmd Windows sistemlerinde genel olarak SQL Server kurulduğunda
+	yüklenir. Programcı isterse sqlcmd'yi hiç SQLServer yüklenmemiş bir sisteme de yükleyebilir. sqlcmd Windows, MacOS X
+	ve Linux sistemlerine yüklenebilmektedir:
+	Link: https://learn.microsoft.com/en-us/sql/tools/sqlcmd/sqlcmd-utility?view=sql-server-ver16&tabs=go%2Cmac&pivots=cs1-bash (21 Ocak 2024 22:08)
+	sqlcmd ile bir IDE olmadan da veritabanı işlemleri yapılabilmektedir. Şüphesiz bu programın görseli çok iyi değildir.
+	Çok karmaşık işlemlerin yapılması görece zahmetlidir. Dolayısıyla programcı açısından gerektiğinde kullanmak üzere
+	öğrenilmelidir. Sürekli kullanılması zaman kaybına yol açabilir. Burada sqlcmd, pratikte gerekebilecek kadar ele
+	alınacaktır. Diğer detaylar için dökumantasyon incelenebilir. sqlcmd'nin bazı yararlı komutları şunlardır:
+	- sqlcmd programı doğrudan çalıştırıldığında "Windows Authentication" bağlantısı olarak komut satırına düşer.
 
-        2. Parametresi ile aldığı ay ve yıl bilgisine göre o ay ve yıl içerisinde işe girmiş olan kişileri tablo 
-        olarak döndüren get_employees_by_month_and_year fonksiyonunu yazınız
+	- Komut satırından istenmilen bir T-SQL cümlesi yazıldığında hafızaya alınır. 
+
+	- go komutu ile son hafızaya alınmış tüm T-SQL cümleleri sırasıyla çalıştırılır. Hafızadaki cümle hatalı ise uygun
+	hata mesajı	verilir. go komutundan sonra artık hafızada cümle kalmamıştır.
+
+	- sqlcmd q seçeneği ile çalıştırıldığında ilgili cümle veritabanına gönderilir. Örneğin:
+		sqlcmd -q "use testdb; select * from staff"
+	Bir SP parametresiz ise ismi verilerek doğrudan exec yapılabilir. Örneğin
+		sqlcmd -S . -q "sp_databases"
+
+	- sqlcmd programına ilişkin yardım almak için ? seçeneği kullanılabilir
+		sqlcmd -?
+
+	- i seçeneği yolu belirtilen dosya içerisindeki script çalıştırılabilir
+
+	- S seçeneği ile istenilen bir server'a bağlanılabilir
+
+	- o seçeneği ile çıktılar istenilen bir dosyaya yazdırılabilir. Örneğin:
+		sqlcmd -S . -i "staff.sql" -o "result.txt"
+
+	- sqlcmd komut yorumlayıcısı içerisindeyken :r ile dosyadan okuma yapılıp çalıştırılabilir. Örneğin
+		1>:r staff.txt
+
+	- q seçeneği ile bir SP ismi verildiğinde exec işlemi yapılır:
+		
+	- U ve P seçeneleri ile login ve password bilgileri verilerek ilgili server'a bağlanılabilir
+		sqlcmd -S . -U burak -P csd1993
 -----------------------------------------------------------------------------------------------------------------------*/
 
-create database companydb
+create login burak with password='csd1993', default_database=testdb
 
-go
+use testdb
 
-use companydb
+create user burak
 
-go
+use mydb
 
-create table employees (
-	citizen_id char(40),
-	first_name nvarchar(100) not null,
-	middle_name nvarchar(100),
-	last_name nvarchar(100) not null,
-	birth_date date not null,
-	entry_date date default(getdate()) not null
-)
-
-go
-
-
--- 1
-create function get_birth_date_message(@birth_date date)
-returns nvarchar(300)
-as
-begin
-	declare @today date = getdate()
-	declare @birth_day date = datefromparts(datepart(year, @today), datepart(month, @birth_date), datepart(day, @birth_date))
-	declare @age real = datediff(day, @birth_date, @today) / 365.
-	
-	declare @message nvarchar(300)
-
-	if @today > @birth_day
-		set @message = 'Geçmiş doğum gününüz kutlu olsun. Yeni yaşınız:'
-	else if @today < @birth_day
-		set @message = 'Doğum gününüz şimdiden kutlu olsun. Yeni yaşınız:'
-	else 
-		set @message = 'Doğum gününün kutlu olsun. Yeni yaşınız:'
-
-	return @message	+ cast (@age as nvarchar(10))
-end
-
-go
-
-
--- 2
-create function get_employees_by_month_and_year(@month int, @year int)
-returns table
-as
-return (
-	select * from employees where datepart(month, entry_date) = @month and datepart(year, entry_date) = @year
-)
+create user burak

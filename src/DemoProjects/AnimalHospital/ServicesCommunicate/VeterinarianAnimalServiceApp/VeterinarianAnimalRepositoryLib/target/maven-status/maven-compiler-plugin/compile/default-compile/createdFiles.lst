@@ -1,0 +1,4 @@
+com\denizogut\library\animalhospital\data\repository\IVeterinarianAnimalRepository.class
+com\denizogut\library\animalhospital\data\entity\backup\VeterinarianAnimalBackup.class
+com\denizogut\library\animalhospital\data\dal\VeterinarianAnimalServiceHelper.class
+com\denizogut\library\animalhospital\data\entity\VeterinarianAnimal.class

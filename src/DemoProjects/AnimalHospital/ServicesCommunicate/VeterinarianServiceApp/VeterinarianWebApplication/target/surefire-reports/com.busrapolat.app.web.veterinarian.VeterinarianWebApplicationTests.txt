@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.busrapolat.app.web.veterinarian.VeterinarianWebApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.668 s - in com.busrapolat.app.web.veterinarian.VeterinarianWebApplicationTests

@@ -6,8 +6,17 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="AnimalGetService" />
+      </profile>
+      <profile name="Annotation profile for OwnerGetService" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct-processor/1.5.3.Final/mapstruct-processor-1.5.3.Final.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.5.3.Final/mapstruct-1.5.3.Final.jar" />
+        </processorPath>
         <module name="com-atahanyengin-library-animalhospital-repository" />
+        <module name="AnimalGetService" />
         <module name="AnimalPostService" />
         <module name="OwnerGetService" />
       </profile>
@@ -20,11 +29,11 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="AnimalGetService" options="" />
-      <module name="AnimalPostService" options="" />
-      <module name="AnimalServiceApp" options="" />
-      <module name="OwnerGetService" options="" />
-      <module name="com-atahanyengin-library-animalhospital-repository" options="" />
+      <module name="AnimalGetService" options="-parameters" />
+      <module name="AnimalPostService" options="-parameters" />
+      <module name="AnimalServiceApp" options="-parameters" />
+      <module name="OwnerGetService" options="-parameters" />
+      <module name="com-atahanyengin-library-animalhospital-repository" options="-parameters" />
       <module name="com-metemengen-library-animalhospital-repository" options="-parameters" />
     </option>
   </component>

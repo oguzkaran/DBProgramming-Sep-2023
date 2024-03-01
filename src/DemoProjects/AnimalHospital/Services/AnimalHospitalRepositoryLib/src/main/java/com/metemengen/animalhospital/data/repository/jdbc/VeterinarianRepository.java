@@ -22,7 +22,7 @@ import java.util.Optional;
 @Repository(BeanName.VETERINARIAN_REPOSITORY)
 @Lazy
 public class VeterinarianRepository implements IVeterinarianRepository {
-    private static final String COUNT_SQL = "select count(*) from veterinarians";
+    private static final String COUNT_SQL = "select * from find_veterinarian_count()";
 
     private static final String FIND_ALL_SQL = "select * from veterinarians"; //+ " where is_active=true";
 

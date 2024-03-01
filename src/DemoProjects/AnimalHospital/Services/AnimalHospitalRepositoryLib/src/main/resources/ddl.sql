@@ -139,6 +139,19 @@ as '
     end
 ';
 
+create or replace function find_veterinarian_count()
+returns table (number_of_veterinarians bigint)
+as '
+begin
+    return query
+        select
+            count(*)
+        from
+            veterinarians;
+end
+
+' language plpgsql;
+
 
 
 

@@ -1,0 +1,6 @@
+org\csystem\app\service\animalhospital\mapper\IVeterinarianAnimalMapper.class
+org\csystem\app\service\animalhospital\dto\VeterinarianAnimalSaveDTO.class
+org\csystem\app\service\animalhospital\mapper\VeterinarianAnimalMapperImpl.class
+org\csystem\app\service\animalhospital\service\VeterinarianAnimalService.class
+org\csystem\app\service\animalhospital\controller\VeterinarianAnimalController.class
+org\csystem\app\service\animalhospital\VeterinarianAnimalPostServiceApp.class

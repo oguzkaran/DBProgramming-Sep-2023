@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="46c9a9da-3c35-4507-a411-358063f6efe5" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../../.." />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="isToolWindowVisible" value="false" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 3
+}]]></component>
+  <component name="ProjectId" id="2JzqOnOWm91xgFzEX0Cb6METIyu" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Karans/Dropbox/CSD/Kurslar/DBProgramming-Sep-2023/src/SampleProjects/011-AnimalHospital/ServicesCommunicate/VeterinarianAnimalServiceApp",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "spring.configuration.checksum": "5d55477cc8c8fc80a7aa5253020b8ad6",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Karans\Dropbox\CSD\Kurslar\JavaApp1-Jun-2022\src\Projects\014-SpringBoot\010-AnimalHospital\ServicesCommunicate\VeterinarianAnimalServiceApp\VeterinarianAnimalScheduler\src\main\java\org\csystem\app\service\animalhospital\scheduler" />
+      <recent name="C:\Users\Karans\Dropbox\CSD\Kurslar\JavaApp1-Jun-2022\src\Projects\014-SpringBoot\010-AnimalHospital\ServicesCommunicate\VeterinarianAnimalServiceApp\VeterinarianAnimalScheduler\src\main\resources" />
+      <recent name="C:\Users\Karans\Dropbox\CSD\Kurslar\JavaApp1-Jun-2022\src\Projects\014-SpringBoot\010-AnimalHospital\ServicesCommunicate\VeterinarianAnimalServiceApp\VeterinarianAnimalPostService\src\main\java\org\csystem\app\service\animalhospital" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.denizogut.library.animalhospital.data.repository" />
+      <recent name="com.denizogut.library.animalhospital.data.entity.backup" />
+      <recent name="org.csystem.app.service.animalhospital.scheduler.service" />
+      <recent name="org.csystem.app.service.animalhospital.dto.client" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="Application" />
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.VeterinarianAnimalPostServiceApp">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.Main" />
+      <module name="AnimalHospiatalServiceApp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="VeterinarianAnimalPostServiceApp" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="VeterinarianAnimalPostService" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.csystem.app.service.animalhospital.VeterinarianAnimalPostServiceApp" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="VeterinarianAnimalSchedulerApp" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="VeterinarianAnimalScheduler" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.csystem.app.service.animalhospital.scheduler.VeterinarianAnimalSchedulerApp" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-17.0.9-corretto-17.0.9-3183f394aec4-8f899f12" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="46c9a9da-3c35-4507-a411-358063f6efe5" name="Changes" comment="" />
+      <created>1673091232270</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1673091232270</updated>
+      <workItem from="1673091234685" duration="118000" />
+      <workItem from="1675508489297" duration="185000" />
+      <workItem from="1678014885701" duration="4971000" />
+      <workItem from="1678020665139" duration="1953000" />
+      <workItem from="1678529304283" duration="4192000" />
+      <workItem from="1680011197225" duration="2716000" />
+      <workItem from="1680269757208" duration="3120000" />
+      <workItem from="1681222166487" duration="7013000" />
+      <workItem from="1682115076098" duration="75000" />
+      <workItem from="1682430685812" duration="4849000" />
+      <workItem from="1683637907670" duration="3809000" />
+      <workItem from="1702056598488" duration="948000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-commons/3.0.5/spring-data-commons-3.0.5.jar!/org/springframework/data/repository/ListCrudRepository.class</url>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

@@ -1,10 +1,10 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	bankappdb 1.0.0
+	dpn24_bankappdb 1.0.0
 -----------------------------------------------------------------------------------------------------------------------*/
 
-create database dbps23_bankappdb
+create database dpn24_bankappdb
 
-use dbps23_bankappdb
+use dpn24_bankappdb
 
 
 create table marital_status (
